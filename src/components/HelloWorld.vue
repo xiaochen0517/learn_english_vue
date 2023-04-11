@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import testApi from "@/api/test/TestApi";
+
 export default {
     name: "HelloWorld",
     props: {
@@ -15,19 +17,11 @@ export default {
     },
     methods: {
         handleClick() {
-            this.$confirm("此操作将永久删除该文件, 是否继续?")
-                .then(() => {
-                    this.$message({
-                        type: "success",
-                        message: "删除成功!"
-                    });
-                })
-                .catch(() => {
-                    this.$message({
-                        type: "info",
-                        message: "已取消删除"
-                    });
-                });
+            testApi.test().then(res => {
+                console.log("success", res);
+            }).catch(err => {
+                console.log("error", err);
+            });
         }
     }
 };

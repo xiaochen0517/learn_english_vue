@@ -13,12 +13,13 @@ module.exports = {
         "quotes": ["error", "double"],
         "semi": ["error", "always"],
         "vue/require-default-prop": "off",
-        "newline-per-chained-call": ["error", {"ignoreChainWithDepth": 2}],
         "vue/max-attributes-per-line": "off",
         "vue/html-closing-bracket-spacing": ["error", {
             "startTag": "never",
             "endTag": "never",
             "selfClosingTag": "never"
-        }]
+        }],
+        "vue/html-self-closing": "off",
+        "vue/singleline-html-element-content-newline": "off",
     }
 };
