@@ -18,46 +18,44 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import loginApi from "@/api/user/LoginApi";
-import {mapState, mapMutations} from "vuex";
+import {useStore} from "vuex";
+import {ElMessage} from "element-plus";
+import {reactive} from "vue";
+import {useRouter} from "vue-router";
 
+const store = useStore();
+const router = useRouter();
+
+const loginFormData = reactive({
+    username: "",
+    password: "",
+});
+
+const loginFormRules = reactive({
+    username: [{required: true, message: "请输入用户名", trigger: "blur"}],
+    password: [{required: true, message: "请输入密码", trigger: "blur"}],
+});
+
+const doLoginClick = () => {
+    loginApi.login(loginFormData).then((res) => {
+        console.log("success", res);
+        ElMessage.success("登录成功");
+        store.commit("setLogin", true);
+        store.commit("setToken", res.data);
+        router.push("/");
+    }).catch((err) => {
+        console.log("error", err);
+        ElMessage.error(err.msg);
+    });
+};
+</script>
+
+<script>
 export default {
     name: "LoginPage",
-    components: {},
-    data() {
-        return {
-            loginFormData: {
-                username: "",
-                password: ""
-            },
-            loginFormRules: {
-                username: [
-                    {required: true, message: "请输入用户名", trigger: "blur"}
-                ],
-                password: [
-                    {required: true, message: "请输入密码", trigger: "blur"}
-                ]
-            }
-        };
-    },
-    computed: {
-        ...mapState(["login", "token"])
-    },
-    methods: {
-        ...mapMutations(["setLogin", "setToken"]),
-        doLoginClick() {
-            loginApi.login(this.loginFormData).then(res => {
-                console.log("success", res);
-                this.setLogin(true);
-                this.setToken(res.data);
-                this.$router.push("/");
-            }).catch(err => {
-                console.log("error", err);
-                this.$message.error(err.msg);
-            });
-        }
-    }
+    // components: {},
 };
 </script>
 
@@ -70,7 +68,7 @@ export default {
     position: relative;
     overflow: hidden;
 
-    .login-background{
+    .login-background {
         width: 100%;
         position: absolute;
         top: 0;

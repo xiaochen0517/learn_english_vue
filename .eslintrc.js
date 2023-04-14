@@ -10,7 +10,7 @@ module.exports = {
     rules: {
         "indent": ["error", 4],
         "vue/html-indent": ["warn", 4],
-        "quotes": ["error", "double"],
+        "quotes": ["warn", "double"],
         "semi": ["error", "always"],
         "vue/require-default-prop": "off",
         "vue/max-attributes-per-line": "off",

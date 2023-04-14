@@ -11,5 +11,12 @@ module.exports = defineConfig({
                 }
             }
         }
+    },
+    css: {
+        loaderOptions: {
+            less: {
+                additionalData: `@import "@/assets/style/variable.less";`
+            }
+        }
     }
 });

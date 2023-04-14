@@ -6,6 +6,11 @@ import router from "./router/Router.js";
 import store from "@/store/Store.js";
 import axios from "@/api/axios/Axios.js";
 
+// style
+import "@/assets/style/global.less";
+import "@/assets/font/fonts.css";
+import "@/assets/style/iconfont.less";
+
 const app = createApp(App);
 
 app.use(store);
