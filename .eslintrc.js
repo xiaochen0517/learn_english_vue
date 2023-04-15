@@ -21,5 +21,8 @@ module.exports = {
         }],
         "vue/html-self-closing": "off",
         "vue/singleline-html-element-content-newline": "off",
+        "vue/no-export-in-script-setup": "off",
+        "vue/first-attribute-linebreak": "off",
+        "vue/html-closing-bracket-newline": "off",
     }
 };
