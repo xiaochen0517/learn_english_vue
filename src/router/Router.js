@@ -26,6 +26,13 @@ const router = createRouter({
                 sideBar: false
             }
         },
+        {
+            path: "/word/book",
+            component: () => import("../views/word/WordBookPage.vue"),
+            meta: {
+                sideBar: false
+            }
+        }
     ]
 });
 
