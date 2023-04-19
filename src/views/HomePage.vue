@@ -1,76 +1,3 @@
-<template>
-    <div class="home-page">
-        <div class="tool-bar">
-            <el-input v-model="word" placeholder="请输入内容"/>
-            <el-button type="primary" @click="doSearchClick">搜索</el-button>
-            <el-link @click="logoutClick">退出登录</el-link>
-        </div>
-        <div class="center-content">
-            <div class="main-card-box">
-                <div class="word-card card__back" :class="{ card__back__flipped: isFlipped }" @click="showDetailClick">
-                    <div class="word-box flex-row">
-                        <div class="word-text">{{ wordInfo.word }}</div>
-                        <div class="phonetic-item voice-icon"
-                             @click.stop="playAudioClick(wordInfo.voice.queryVoiceUrl)">
-                            &#xe82d;
-                        </div>
-                    </div>
-                    <div class="phonetic-box flex-row">
-                        <div class="phonetic-item phonetic-text">US: [{{ wordInfo.phonetic.usPhonetic }}]</div>
-                        <div class="phonetic-item voice-icon" @click.stop="playAudioClick(wordInfo.voice.usVoiceUrl)">
-                            &#xe82d;
-                        </div>
-                        <div class="phonetic-item phonetic-text">UK: [{{ wordInfo.phonetic.ukPhonetic }}]</div>
-                        <div class="phonetic-item voice-icon" @click.stop="playAudioClick(wordInfo.voice.ukVoiceUrl)">
-                            &#xe82d;
-                        </div>
-                    </div>
-                    <div class="word-explains">
-                        <div v-for="(item, index) in wordInfo.explains" :key="index" class="explain-item">
-                            {{ item }}
-                        </div>
-                    </div>
-                </div>
-                <div class="word-card card__front" :class="{ card__front__flipped: isFlipped }"
-                     @click="showDetailClick">
-                    <div class="word-box flex-row">
-                        <div class="word-text">{{ wordInfo.word }}</div>
-                        <div class="phonetic-item voice-icon"
-                             @click.stop="playAudioClick(wordInfo.voice.queryVoiceUrl)">
-                            &#xe82d;
-                        </div>
-                    </div>
-                    <div class="phonetic-box flex-row">
-                        <div class="phonetic-item phonetic-text">US: [{{ wordInfo.phonetic.usPhonetic }}]</div>
-                        <div class="phonetic-item voice-icon" @click.stop="playAudioClick(wordInfo.voice.usVoiceUrl)">
-                            &#xe82d;
-                        </div>
-                        <div class="phonetic-item phonetic-text">UK: [{{ wordInfo.phonetic.ukPhonetic }}]</div>
-                        <div class="phonetic-item voice-icon" @click.stop="playAudioClick(wordInfo.voice.ukVoiceUrl)">
-                            &#xe82d;
-                        </div>
-                    </div>
-                    <div class="example-sentence-box">
-                        <div class="example-sentence-title">例句：</div>
-                        <div v-for="(item, index) in exampleSentence" :key="index" class="example-sentence-item"
-                             @click.stop="showSentTransClick(item)">
-                            <div class="example-sentence-text">{{ item.en }}</div>
-                            <div class="example-sentence-translation" :class="{'content-blur': !item.show}">
-                                {{ item.zh }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="center-bottom-content">
-                <el-button class="iconfont" type="default" size="large" @click="flipCardClick">
-                    &#xeb63;
-                </el-button>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script>
 import {defineComponent} from "vue";
 
@@ -191,6 +118,83 @@ const playAudioClick = (url) => {
 };
 
 </script>
+
+<template>
+    <div class="home-page">
+        <div class="tool-bar">
+            <el-input v-model="word" placeholder="请输入内容"/>
+            <el-button type="primary" @click="doSearchClick">搜索</el-button>
+            <el-link @click="logoutClick">退出登录</el-link>
+        </div>
+        <div class="center-content">
+            <div class="main-card-box">
+                <div class="word-card card__back" :class="{ card__back__flipped: isFlipped }" @click="showDetailClick">
+                    <div class="word-box flex-row">
+                        <div class="word-text">{{ wordInfo.word }}</div>
+                        <div class="phonetic-item voice-icon iconfont"
+                             @click.stop="playAudioClick(wordInfo.voice.queryVoiceUrl)">
+                            &#xe82d;
+                        </div>
+                    </div>
+                    <div class="phonetic-box flex-row">
+                        <div class="phonetic-item phonetic-text">US: [{{ wordInfo.phonetic.usPhonetic }}]</div>
+                        <div class="phonetic-item voice-icon iconfont"
+                             @click.stop="playAudioClick(wordInfo.voice.usVoiceUrl)">
+                            &#xe82d;
+                        </div>
+                        <div class="phonetic-item phonetic-text">UK: [{{ wordInfo.phonetic.ukPhonetic }}]</div>
+                        <div class="phonetic-item voice-icon iconfont"
+                             @click.stop="playAudioClick(wordInfo.voice.ukVoiceUrl)">
+                            &#xe82d;
+                        </div>
+                    </div>
+                    <div class="word-explains">
+                        <div v-for="(item, index) in wordInfo.explains" :key="index" class="explain-item">
+                            {{ item }}
+                        </div>
+                    </div>
+                </div>
+                <div class="word-card card__front" :class="{ card__front__flipped: isFlipped }"
+                     @click="showDetailClick">
+                    <div class="word-box flex-row">
+                        <div class="word-text">{{ wordInfo.word }}</div>
+                        <div class="phonetic-item voice-icon iconfont"
+                             @click.stop="playAudioClick(wordInfo.voice.queryVoiceUrl)">
+                            &#xe82d;
+                        </div>
+                    </div>
+                    <div class="phonetic-box flex-row">
+                        <div class="phonetic-item phonetic-text">US: [{{ wordInfo.phonetic.usPhonetic }}]</div>
+                        <div class="phonetic-item voice-icon iconfont"
+                             @click.stop="playAudioClick(wordInfo.voice.usVoiceUrl)">
+                            &#xe82d;
+                        </div>
+                        <div class="phonetic-item phonetic-text">UK: [{{ wordInfo.phonetic.ukPhonetic }}]</div>
+                        <div class="phonetic-item voice-icon iconfont"
+                             @click.stop="playAudioClick(wordInfo.voice.ukVoiceUrl)">
+                            &#xe82d;
+                        </div>
+                    </div>
+                    <div class="example-sentence-box">
+                        <div class="example-sentence-title">例句：</div>
+                        <div v-for="(item, index) in exampleSentence" :key="index" class="example-sentence-item"
+                             @click.stop="showSentTransClick(item)">
+                            <div class="example-sentence-text">{{ item.en }}</div>
+                            <div class="example-sentence-translation" :class="{'content-blur': !item.show}">
+                                {{ item.zh }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-bottom-content">
+                <el-button class="iconfont" type="default" size="large" @click="flipCardClick">
+                    &#xeb63;
+                </el-button>
+            </div>
+        </div>
+    </div>
+</template>
 
 <style lang="less" scoped>
 .home-page {
